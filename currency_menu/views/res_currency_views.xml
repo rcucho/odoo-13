@@ -28,7 +28,6 @@
             id="menu_currency_root"
             name="Monedas"
             sequence="16"
-            groups="base.group_multi_company"
             web_icon="currency_menu,static/description/icon.png"/>
             
         <menuitem
