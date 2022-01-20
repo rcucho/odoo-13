@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_currency_rate_tree" model="ir.ui.view">
+            <field name="name">res.currency.rate.tree.menu</field>
+            <field name="model">res.currency.rate</field>
+            <field name="inherit_id" ref="base.view_currency_rate_tree"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='rate']" position="after">
+                    <field name="currency_id"/>
+                </xpath>
+            </data>
+            </field>
+        </record>
+        
+        <record id="act_view_currency_rates" model="ir.actions.act_window">
+            <field name="name">Tasas</field>
+            <field name="res_model">res.currency.rate</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_currency_rate_tree"/>
+            <field name="domain">[]</field>
+            <field name="context">{'create': 0, 'edit': 0}</field>
+        </record>
+        
+        <menuitem
+            id="menu_currency_root"
+            name="Monedas"
+            sequence="16"
+            groups="base.group_multi_company"
+            web_icon="currency_menu,static/description/icon.png"/>
+            
+        <menuitem
+            id="menu_action_currency_all_form"
+            name="Monedas"
+            sequence="10"
+            parent="menu_currency_root"
+            action="base.action_currency_all_form"/>
+        
+        <menuitem
+            id="menu_act_view_currency_rates"
+            name="Tasas"
+            sequence="20"
+            parent="menu_currency_root"
+            action="act_view_currency_rates"/>
+    </data>
+</odoo>
